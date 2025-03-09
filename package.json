@@ -28,7 +28,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/harboor/core.git"
+        "url": "git+https://github.com/harboorio/core.git"
     },
     "private": false,
     "publishConfig": {
