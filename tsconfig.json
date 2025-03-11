@@ -22,5 +22,6 @@
             "@shared/*": ["./src/shared/*"],
             "@features/*": ["./src/features/*"]
         }
-    }
+    },
+    "include": ["src"]
 }
