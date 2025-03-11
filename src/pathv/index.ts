@@ -25,6 +25,10 @@ const rePathvCalls = `(pathv\\(('|")(.*)('|"))\\)`;
 const rePathvCallsGM = new RegExp(rePathvCalls, "gm");
 const rePathvCallsNoFlag = new RegExp(rePathvCalls, "");
 
+export function hasPathvCalls(content: string) {
+    return rePathvCallsGM.test(content);
+}
+
 function findProjectPath(sourceRelativePath: string) {
     const _src = path.normalize(sourceRelativePath);
     const cwd = process.cwd();

@@ -1,3 +1,3 @@
-import { pathv, processPathvCalls } from "./pathv/index";
+import { pathv, processPathvCalls, hasPathvCalls } from "./pathv/index";
 
-export { pathv, processPathvCalls };
+export { pathv, processPathvCalls, hasPathvCalls };
