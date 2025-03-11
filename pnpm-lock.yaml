@@ -32,6 +32,9 @@ importers:
       '@rollup/plugin-typescript':
         specifier: ^12.1.2
         version: 12.1.2(rollup@4.35.0)(tslib@2.8.1)(typescript@5.8.2)
+      '@types/node':
+        specifier: ^22.13.10
+        version: 22.13.10
       commitizen:
         specifier: ^4.3.1
         version: 4.3.1(@types/node@22.13.10)(typescript@5.8.2)
@@ -62,6 +65,9 @@ importers:
       solid-js:
         specifier: ^1.9.5
         version: 1.9.5
+      type-fest:
+        specifier: ^4.37.0
+        version: 4.37.0
       typescript:
         specifier: ^5.7.3
         version: 5.8.2
@@ -3366,7 +3372,6 @@ snapshots:
   '@types/node@22.13.10':
     dependencies:
       undici-types: 6.20.0
-    optional: true
 
   '@types/normalize-package-data@2.4.4': {}
 
@@ -5101,8 +5106,7 @@ snapshots:
   uglify-js@3.19.3:
     optional: true
 
-  undici-types@6.20.0:
-    optional: true
+  undici-types@6.20.0: {}
 
   unicode-emoji-modifier-base@1.0.0: {}
 

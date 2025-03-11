@@ -19,9 +19,8 @@
         "useUnknownInCatchVariables": false,
         "resolveJsonModule": true,
         "paths": {
-            "@features/*": ["./src/features/*"],
-            "@services/*": ["./src/services/*"],
-            "@infra/*": ["./src/infra/*"]
+            "@shared/*": ["./src/shared/*"],
+            "@features/*": ["./src/features/*"]
         }
     }
 }

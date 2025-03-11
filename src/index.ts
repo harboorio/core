@@ -1,5 +1,3 @@
-export const rePathvCalls = `(pathv\(('|"))(.*)(('|")\))`;
+import { pathv, processPathvCalls } from "./pathv/index";
 
-export function pathv(relativePath: string) {
-    return relativePath;
-}
+export { pathv, processPathvCalls };
