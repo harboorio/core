@@ -1,5 +1,5 @@
 import path from "node:path";
-import { copyFile } from "node:fs/promises";
+import { copyFile, mkdir } from "node:fs/promises";
 import { readTsConfig, isAliasPath, resolveAlias } from "../tsconfig/index";
 import { type TsConfigJson } from "type-fest";
 
@@ -67,6 +67,8 @@ export function formatSourceContent(content: string, analysis: PathvAnalysis) {
 
 async function distAnalysedFiles(analysis: PathvAnalysis, projectPath: string) {
     for await (const { realRelPath, relDistPath } of Object.values(analysis)) {
+        const fileDistDir = path.resolve(projectPath, path.dirname(relDistPath));
+        await mkdir(fileDistDir, { recursive: true });
         await copyFile(path.resolve(projectPath, realRelPath), path.resolve(projectPath, relDistPath));
     }
 }
