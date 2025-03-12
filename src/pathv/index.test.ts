@@ -55,7 +55,7 @@ export function createLogger({ name, redact }: { name: string, redact: string[] 
         },
     });
 
-    const content2 = `
+    const content2 = `import * as path from 'node:path';
 import pino from 'pino'
 import { pathv } from '@harboor/core'
 

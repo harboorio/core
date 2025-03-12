@@ -61,7 +61,7 @@ export async function processPathvCalls(
 export function formatSourceContent(content: string, analysis: PathvAnalysis) {
     return Object.keys(analysis).reduce<string>(
         (memo, token) => memo.replace(token, analysis[token].pathvExp),
-        content,
+        `import * as path from 'node:path';` + content,
     );
 }
 
