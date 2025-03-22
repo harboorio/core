@@ -46,13 +46,38 @@ export async function fetchSecretsAws<E extends Record<string, string | number |
         return new Error("No text found in the response.");
     }
 
-    const secrets = JSON.parse(response.SecretString) as E;
+    const secrets = JSON.parse(response.SecretString);
+    const resolved = resolveReferencesRecursive(secrets);
 
     if (dest) {
         await save(dest, secrets);
     }
 
-    return secrets;
+    return resolved as E;
+}
+
+export function resolveReferencesRecursive(secrets: Record<string, string>, hadAtLeastOneReference: boolean = true) {
+    if (!hadAtLeastOneReference) {
+        return secrets;
+    }
+
+    const re = /\${([^}]*)}/g;
+    const keys = Object.keys(secrets);
+    const resolved: Record<string, string> = {};
+    let references = 0;
+
+    for (const key of keys) {
+        const v = secrets[key];
+        const matches = [...v.matchAll(re)];
+        if (matches.length > 0) references += matches.filter((m) => m[1] in secrets).length;
+        const resolvedValue = matches.reduce(
+            (memo, m) => (m[1] in secrets ? memo.replace(m[0], secrets[m[1]]) : memo),
+            v,
+        );
+        resolved[key] = resolvedValue;
+    }
+
+    return resolveReferencesRecursive(resolved, references > 0);
 }
 
 export async function save(dest: string, secrets: Record<string, string | number | boolean>) {
